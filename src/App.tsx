@@ -2,8 +2,11 @@ import { useState } from "react"
 import reactLogo from "./assets/react.svg"
 import viteLogo from "/vite.svg"
 import "./App.css"
+// import { useGetTransformersQuery } from "./store/api/useTransformers";
 
 function App() {
+  // const { data, isLoading, isError, isSuccess } = useGetTransformersQuery();
+
   const [count, setCount] = useState(0)
 
   return (
