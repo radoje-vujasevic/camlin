@@ -21,4 +21,18 @@ export interface TransformerRaw extends TransformerBase {
 
 export interface Transformer extends TransformerBase {
   lastTenVoltgageReadings: VoltageReading[]
+  color: string
+}
+
+export interface TransformerTableProps {
+  transformers: Transformer[]
+}
+
+export interface TransformerChartProps {
+  transformers: Transformer[]
+}
+
+export interface ChartPoint {
+  timestamp: string
+  [transformerName: string]: number | string | null
 }

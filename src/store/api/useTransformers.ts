@@ -18,6 +18,7 @@ export const transformersApiSlice = createApi({
               voltage: Number(voltage),
             }),
           ),
+          color: `hsl(${(Number(rest.assetId) * 72) % 360}, 70%, 50%)`,
         })),
     }),
   }),

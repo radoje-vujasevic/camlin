@@ -1,38 +1,42 @@
-import { useState } from "react"
-import reactLogo from "./assets/react.svg"
-import viteLogo from "/vite.svg"
+import React from "react"
+import { useGetTransformersQuery } from "./store/api/useTransformers"
+import { TransformerTable } from "./components/TransformerTable"
+import { TransformerChart } from "./components/TransformerChart"
 import "./App.css"
-// import { useGetTransformersQuery } from "./store/api/useTransformers";
 
-function App() {
-  // const { data, isLoading, isError, isSuccess } = useGetTransformersQuery();
+export const App: React.FC = () => {
+  const { data, isLoading, isError, isSuccess } = useGetTransformersQuery()
 
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <p>Loading transformers…</p>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    )
+  }
+
+  if (isError) {
+    return (
+      <div className="error">
+        <p>Error fetching data</p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    )
+  }
+
+  return isSuccess ? (
+    <div className="body">
+      <h1 className="title">Transformer Dashboard</h1>
+
+      <section>
+        <h2 className="h2">Voltage Readings Over Time</h2>
+        <TransformerChart transformers={data} />
+      </section>
+
+      <section>
+        <TransformerTable transformers={data} />
+      </section>
+    </div>
+  ) : null
 }
 
 export default App
