@@ -4,20 +4,26 @@ import "./TransformerTable.css"
 
 export const TransformerTable: React.FC<TransformerTableProps> = ({
   transformers,
+  selected,
 }) => {
   const [search, setSearch] = useState<string>("")
+
+  const filteredTransformers = useMemo(
+    () => transformers.filter(asset => selected.includes(asset.name)),
+    [transformers, selected],
+  )
 
   const filtered = useMemo(() => {
     const s = search.trim().toLowerCase()
     return !s
-      ? transformers
-      : transformers.filter(
+      ? filteredTransformers
+      : filteredTransformers.filter(
           ({ name, region, health }) =>
             name.toLowerCase().includes(s) ||
             region.toLowerCase().includes(s) ||
             health.toLowerCase().includes(s),
         )
-  }, [transformers, search])
+  }, [filteredTransformers, search])
 
   return (
     <div className="transformer-table">

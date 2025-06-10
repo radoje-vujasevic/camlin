@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react"
+import React, { useMemo } from "react"
 import {
   LineChart,
   Line,
@@ -13,10 +13,9 @@ import "./TransformerChart.css"
 
 export const TransformerChart: React.FC<TransformerChartProps> = ({
   transformers,
+  selected,
+  setSelected,
 }) => {
-  const allNames = transformers.map(({ name }) => name)
-  const [selected, setSelected] = useState<string[]>(allNames)
-
   // Build chartData once
   const chartData = useMemo(() => {
     // 1) Collect all timestamps

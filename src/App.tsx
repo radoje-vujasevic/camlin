@@ -1,8 +1,7 @@
 import React from "react"
 import { useGetTransformersQuery } from "./store/api/useTransformers"
-import { TransformerTable } from "./components/TransformerTable"
-import { TransformerChart } from "./components/TransformerChart"
 import "./App.css"
+import HomePage from "./pages/HomePage"
 
 export const App: React.FC = () => {
   const { data, isLoading, isError, isSuccess } = useGetTransformersQuery()
@@ -23,20 +22,7 @@ export const App: React.FC = () => {
     )
   }
 
-  return isSuccess ? (
-    <div className="body">
-      <h1 className="title">Transformer Dashboard</h1>
-
-      <section>
-        <h2 className="h2">Voltage Readings Over Time</h2>
-        <TransformerChart transformers={data} />
-      </section>
-
-      <section>
-        <TransformerTable transformers={data} />
-      </section>
-    </div>
-  ) : null
+  return isSuccess ? <HomePage transformers={data} /> : null
 }
 
 export default App
