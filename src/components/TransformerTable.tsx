@@ -23,7 +23,7 @@ export const TransformerTable: React.FC<TransformerTableProps> = ({
     <div className="transformer-table">
       <input
         type="text"
-        placeholder="Search by name / region / health…"
+        placeholder="Search by name / region / health"
         value={search}
         onChange={e => setSearch(e.target.value)}
         name={"search"}
@@ -40,11 +40,13 @@ export const TransformerTable: React.FC<TransformerTableProps> = ({
             </tr>
           </thead>
           <tbody>
-            {filtered.map(t => (
-              <tr key={t.assetId} className="table-row">
-                <td className="table-row-cell">{t.name}</td>
-                <td className="table-row-cell">{t.region}</td>
-                <td className="table-row-cell">{t.health}</td>
+            {filtered.map(({ assetId, color, name, region, health }) => (
+              <tr key={assetId} className="table-row">
+                <td className="table-row-cell" style={{ color }}>
+                  {name}
+                </td>
+                <td className="table-row-cell">{region}</td>
+                <td className="table-row-cell">{health}</td>
               </tr>
             ))}
             {filtered.length === 0 && (

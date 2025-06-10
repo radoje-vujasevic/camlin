@@ -44,26 +44,6 @@ export const TransformerChart: React.FC<TransformerChartProps> = ({
 
   return (
     <div>
-      <div className="transformer-chart-controls">
-        {transformers.map(({ assetId, name }) => (
-          <label key={assetId} className="transformer-chart-control">
-            <input
-              type="checkbox"
-              name={name}
-              checked={selected.includes(name)}
-              onChange={() =>
-                setSelected(prev =>
-                  prev.includes(name)
-                    ? prev.filter(n => n !== name)
-                    : [...prev, name],
-                )
-              }
-            />
-            <span className="transformer-chart-control-name">{name}</span>
-          </label>
-        ))}
-      </div>
-
       <div className="transformer-chart-container">
         <ResponsiveContainer>
           <LineChart data={chartData}>
@@ -81,20 +61,28 @@ export const TransformerChart: React.FC<TransformerChartProps> = ({
             <Tooltip
               labelFormatter={(label: string) => new Date(label).toUTCString()}
             />
-            <Legend />
-            {transformers.map(({ name, assetId, color }) =>
-              selected.includes(name) ? (
-                <Line
-                  key={assetId}
-                  type="monotone"
-                  dataKey={name}
-                  dot={false}
-                  strokeWidth={2}
-                  colorRendering={color}
-                  stroke={color}
-                />
-              ) : null,
-            )}
+            <Legend
+              onClick={event =>
+                setSelected(prev =>
+                  prev.includes(event.value)
+                    ? prev.filter(n => n !== event.value)
+                    : [...prev, event.value],
+                )
+              }
+              verticalAlign="top"
+              iconType="circle"
+            />
+            {transformers.map(({ name, assetId, color }) => (
+              <Line
+                key={assetId}
+                type="monotone"
+                dataKey={name}
+                dot={false}
+                strokeWidth={2}
+                hide={!selected.includes(name)}
+                stroke={color}
+              />
+            ))}
           </LineChart>
         </ResponsiveContainer>
       </div>
