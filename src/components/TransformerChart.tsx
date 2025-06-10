@@ -62,10 +62,10 @@ export const TransformerChart: React.FC<TransformerChartProps> = ({
             />
             <Legend
               onClick={event =>
-                setSelected(prev =>
-                  prev.includes(event.value)
-                    ? prev.filter(n => n !== event.value)
-                    : [...prev, event.value],
+                setSelected(
+                  selected.includes(event.value)
+                    ? selected.filter(n => n !== event.value)
+                    : [...selected, event.value],
                 )
               }
               verticalAlign="top"

@@ -32,7 +32,7 @@ export interface TransformerTableProps {
 export interface TransformerChartProps {
   transformers: Transformer[]
   selected: string[]
-  setSelected: React.Dispatch<React.SetStateAction<string[]>>
+  setSelected: (selected: string[]) => void
 }
 
 export interface ChartPoint {

@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import { TransformerChart } from "../components/TransformerChart"
 import { TransformerTable } from "../components/TransformerTable"
 import type { HomePageProps } from "../types"
+import { useSelectedSplice } from "../store/hooks/useSelectedSplice"
 
 const HomePage: React.FC<HomePageProps> = ({ transformers }) => {
-  const allNames = transformers.map(({ name }) => name)
-  const [selected, setSelected] = useState<string[]>(allNames)
+  const { selected, set } = useSelectedSplice()
 
   return (
     <div className="body">
@@ -16,7 +16,7 @@ const HomePage: React.FC<HomePageProps> = ({ transformers }) => {
         <TransformerChart
           transformers={transformers}
           selected={selected}
-          setSelected={setSelected}
+          setSelected={set}
         />
       </section>
 
