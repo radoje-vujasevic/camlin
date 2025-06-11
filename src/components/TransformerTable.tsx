@@ -1,6 +1,11 @@
 import React, { useMemo, useState } from "react"
-import type { TransformerTableProps } from "../types"
+import type { Transformer } from "../types"
 import "./TransformerTable.css"
+
+interface TransformerTableProps {
+  transformers: Transformer[]
+  selected: string[]
+}
 
 export const TransformerTable: React.FC<TransformerTableProps> = ({
   transformers,

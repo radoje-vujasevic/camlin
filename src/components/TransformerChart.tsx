@@ -8,15 +8,25 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
-import type { ChartPoint, TransformerChartProps } from "../types"
+import type { Transformer } from "../types"
 import "./TransformerChart.css"
+
+interface TransformerChartProps {
+  transformers: Transformer[]
+  selected: string[]
+  setSelected: (selected: string[]) => void
+}
+
+interface ChartPoint {
+  timestamp: string
+  [transformerName: string]: number | string | null
+}
 
 export const TransformerChart: React.FC<TransformerChartProps> = ({
   transformers,
   selected,
   setSelected,
 }) => {
-  // Build chartData once
   const chartData = useMemo(() => {
     // 1) Collect all timestamps
     const timestampsSet = new Set<string>()
@@ -26,7 +36,7 @@ export const TransformerChart: React.FC<TransformerChartProps> = ({
       ),
     )
 
-    const allTimestamps = Array.from(timestampsSet).sort() // sorted chronologically
+    const allTimestamps = Array.from(timestampsSet).sort()
 
     // 2) For each timestamp, build an object: ChartPoint
     return allTimestamps.map(timestamp => {

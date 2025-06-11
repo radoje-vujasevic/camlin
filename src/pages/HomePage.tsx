@@ -1,8 +1,12 @@
 import React from "react"
 import { TransformerChart } from "../components/TransformerChart"
 import { TransformerTable } from "../components/TransformerTable"
-import type { HomePageProps } from "../types"
+import type { Transformer } from "../types"
 import { useSelectedSplice } from "../store/slices/useSelectedSplice"
+
+interface HomePageProps {
+  transformers: Transformer[]
+}
 
 const HomePage: React.FC<HomePageProps> = ({ transformers }) => {
   const { selected, setSelected } = useSelectedSplice()

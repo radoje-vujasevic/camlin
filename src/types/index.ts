@@ -23,23 +23,3 @@ export interface Transformer extends TransformerBase {
   lastTenVoltgageReadings: VoltageReading[]
   color: string
 }
-
-export interface TransformerTableProps {
-  transformers: Transformer[]
-  selected: string[]
-}
-
-export interface TransformerChartProps {
-  transformers: Transformer[]
-  selected: string[]
-  setSelected: (selected: string[]) => void
-}
-
-export interface ChartPoint {
-  timestamp: string
-  [transformerName: string]: number | string | null
-}
-
-export interface HomePageProps {
-  transformers: Transformer[]
-}

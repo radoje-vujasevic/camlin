@@ -4,6 +4,7 @@
   user-select: none;
 }
 
-.transformer-chart-container .recharts-legend-item:hover {
+.transformer-chart-container .recharts-legend-item {
+  margin-bottom: 20px;
   cursor: pointer;
 }
