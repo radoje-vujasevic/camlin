@@ -3,7 +3,7 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import { transformersApiSlice } from "./slices/api/useTransformers"
 import { persistenceMiddleware } from "./middleware/persistenceMiddleware"
-import { selectedReducer } from "./slices/selectedSlice"
+import { selectedReducer } from "./slices/useSelectedSplice"
 
 const rootReducer = combineSlices(transformersApiSlice, {
   selected: selectedReducer,

@@ -8,22 +8,22 @@ export const TransformerTable: React.FC<TransformerTableProps> = ({
 }) => {
   const [search, setSearch] = useState<string>("")
 
-  const filteredTransformers = useMemo(
-    () => transformers.filter(asset => selected.includes(asset.name)),
+  const filteredTransformersBySelected = useMemo(
+    () => transformers.filter(({ name }) => selected.includes(name)),
     [transformers, selected],
   )
 
-  const filtered = useMemo(() => {
+  const filteredBySearch = useMemo(() => {
     const s = search.trim().toLowerCase()
     return !s
-      ? filteredTransformers
-      : filteredTransformers.filter(
+      ? filteredTransformersBySelected
+      : filteredTransformersBySelected.filter(
           ({ name, region, health }) =>
             name.toLowerCase().includes(s) ||
             region.toLowerCase().includes(s) ||
             health.toLowerCase().includes(s),
         )
-  }, [filteredTransformers, search])
+  }, [filteredTransformersBySelected, search])
 
   return (
     <div className="transformer-table">
@@ -46,16 +46,18 @@ export const TransformerTable: React.FC<TransformerTableProps> = ({
             </tr>
           </thead>
           <tbody>
-            {filtered.map(({ assetId, color, name, region, health }) => (
-              <tr key={assetId} className="table-row">
-                <td className="table-row-cell" style={{ color }}>
-                  {name}
-                </td>
-                <td className="table-row-cell">{region}</td>
-                <td className="table-row-cell">{health}</td>
-              </tr>
-            ))}
-            {filtered.length === 0 && (
+            {filteredBySearch.map(
+              ({ assetId, color, name, region, health }) => (
+                <tr key={assetId} className="table-row">
+                  <td className="table-row-cell" style={{ color }}>
+                    {name}
+                  </td>
+                  <td className="table-row-cell">{region}</td>
+                  <td className="table-row-cell">{health}</td>
+                </tr>
+              ),
+            )}
+            {filteredBySearch.length === 0 && (
               <tr>
                 <td colSpan={3} className="table-empty-message">
                   No transformers match your search.

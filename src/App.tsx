@@ -3,26 +3,26 @@ import { useGetTransformersQuery } from "./store/slices/api/useTransformers"
 import "./App.css"
 import HomePage from "./pages/HomePage"
 import { PERSISTED_KEYS, type RootState } from "./store/store"
-import { useSelectedSplice } from "./store/hooks/useSelectedSplice"
+import { useSelectedSplice } from "./store/slices/useSelectedSplice"
 
 export const App: React.FC = () => {
   const { data, isLoading, isError, isSuccess } = useGetTransformersQuery()
-  const { set } = useSelectedSplice()
+  const { setSelected } = useSelectedSplice()
 
   useEffect(() => {
     const selectedSync = (event: StorageEvent) => {
       if (
-        event.key &&
+        event.key === "selected" &&
         event.newValue &&
         PERSISTED_KEYS.includes(event.key as keyof RootState)
       ) {
-        set(JSON.parse(event.newValue).selected.sort())
+        setSelected(JSON.parse(event.newValue).selected.sort())
       }
     }
 
     window.addEventListener("storage", selectedSync)
     return () => window.removeEventListener("storage", selectedSync)
-  }, [set])
+  }, [setSelected])
 
   if (isLoading) {
     return (

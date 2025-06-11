@@ -10,7 +10,7 @@ export const transformersApiSlice = createApi({
       query: () => "sampledata.json",
       providesTags: () => [{ type: "Transformers" }],
       transformResponse: (tr: TransformerRaw[]) =>
-        tr.map(({ lastTenVoltgageReadings, ...rest }) => ({
+        tr.map(({ lastTenVoltgageReadings, ...rest }, i) => ({
           ...rest,
           lastTenVoltgageReadings: lastTenVoltgageReadings.map(
             ({ timestamp, voltage }) => ({
@@ -18,7 +18,7 @@ export const transformersApiSlice = createApi({
               voltage: Number(voltage),
             }),
           ),
-          color: `hsl(${(Number(rest.assetId) * 72) % 360}, 70%, 50%)`,
+          color: `hsl(${((i + 1) % tr.length) * (360 / tr.length)}, 70%, 50%)`,
         })),
     }),
   }),
