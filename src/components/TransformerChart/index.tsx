@@ -58,7 +58,7 @@ export const TransformerChart: React.FC<TransformerChartProps> = ({
           <LineChart data={chartData}>
             <XAxis
               dataKey="timestamp"
-              tickFormatter={timestamp =>
+              tickFormatter={(timestamp: string) =>
                 new Intl.DateTimeFormat("en-GB", {
                   day: "numeric",
                   month: "numeric",
@@ -71,11 +71,11 @@ export const TransformerChart: React.FC<TransformerChartProps> = ({
               labelFormatter={(label: string) => new Date(label).toUTCString()}
             />
             <Legend
-              onClick={event =>
+              onClick={({ value }: { value: string }) =>
                 setSelected(
-                  selected.includes(event.value)
-                    ? selected.filter(n => n !== event.value)
-                    : [...selected, event.value],
+                  selected.includes(value)
+                    ? selected.filter(n => n !== value)
+                    : [...selected, value],
                 )
               }
               verticalAlign="top"

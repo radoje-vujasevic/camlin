@@ -4,6 +4,7 @@ import "./App.css"
 import HomePage from "./pages/HomePage"
 import { PERSISTED_KEYS, type RootState } from "./store/store"
 import { useSelectedSplice } from "./store/hooks/useSelectedSplice"
+import type { SelectedState } from "./store/slices/selectedSlice"
 
 export const App: React.FC = () => {
   const { data, isLoading, isError, isSuccess } = useGetTransformersQuery()
@@ -16,7 +17,12 @@ export const App: React.FC = () => {
         event.newValue &&
         PERSISTED_KEYS.includes(event.key as keyof RootState)
       ) {
-        setSelected(JSON.parse(event.newValue).selected.sort())
+        try {
+          const { selected } = JSON.parse(event.newValue) as SelectedState
+          setSelected([...selected].sort())
+        } catch (error) {
+          console.error("Error parsing selected from localStorage:", error)
+        }
       }
     }
 

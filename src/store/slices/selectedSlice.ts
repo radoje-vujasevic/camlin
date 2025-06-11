@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
 import { transformersApiSlice } from "./api/useTransformers"
 
-interface SelectedState {
+export interface SelectedState {
   selected: string[]
 }
 

@@ -28,13 +28,15 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
   return store
 }
 
-const loadPersistedState = (keys: (keyof RootState)[]) => {
+const loadPersistedState = <T extends keyof RootState>(
+  keys: T[],
+): Partial<RootState> => {
   const state: Partial<RootState> = {}
   keys.forEach(key => {
     try {
       const value = localStorage.getItem(key)
       if (value !== null) {
-        state[key] = JSON.parse(value)
+        state[key] = JSON.parse(value) as RootState[T]
       }
     } catch (e) {
       console.error(`Failed to parse persisted state for key "${key}":`, e)
