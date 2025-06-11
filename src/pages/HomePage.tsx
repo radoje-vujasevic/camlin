@@ -1,8 +1,8 @@
 import React from "react"
+import type { Transformer } from "../types"
+import { useSelectedSplice } from "../store/hooks/useSelectedSplice"
 import { TransformerChart } from "../components/TransformerChart"
 import { TransformerTable } from "../components/TransformerTable"
-import type { Transformer } from "../types"
-import { useSelectedSplice } from "../store/slices/useSelectedSplice"
 
 interface HomePageProps {
   transformers: Transformer[]

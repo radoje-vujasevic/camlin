@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react"
-import type { Transformer } from "../types"
-import "./TransformerTable.css"
+import type { Transformer } from "../../types"
+import "./styles.css"
 
 interface TransformerTableProps {
   transformers: Transformer[]

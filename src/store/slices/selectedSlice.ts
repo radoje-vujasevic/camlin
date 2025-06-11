@@ -1,5 +1,4 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit"
-import { useAppDispatch, useAppSelector } from "../hooks"
 import { transformersApiSlice } from "./api/useTransformers"
 
 interface SelectedState {
@@ -36,15 +35,3 @@ export const selectedReducer = selectedSlice.reducer
 
 export const selectSelectedValues = (state: { selected: SelectedState }) =>
   state.selected.selected
-
-export const useSelectedSplice = () => {
-  const dispatch = useAppDispatch()
-  const selectedValues = useAppSelector(selectSelectedValues)
-
-  return {
-    selected: selectedValues,
-    setSelected: (selected: string[]) => {
-      dispatch(setSelected(selected))
-    },
-  }
-}

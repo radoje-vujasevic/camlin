@@ -3,7 +3,7 @@ import { useGetTransformersQuery } from "./store/slices/api/useTransformers"
 import "./App.css"
 import HomePage from "./pages/HomePage"
 import { PERSISTED_KEYS, type RootState } from "./store/store"
-import { useSelectedSplice } from "./store/slices/useSelectedSplice"
+import { useSelectedSplice } from "./store/hooks/useSelectedSplice"
 
 export const App: React.FC = () => {
   const { data, isLoading, isError, isSuccess } = useGetTransformersQuery()

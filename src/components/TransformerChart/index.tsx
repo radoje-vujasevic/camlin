@@ -8,8 +8,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts"
-import type { Transformer } from "../types"
-import "./TransformerChart.css"
+import type { Transformer } from "../../types"
+import "./styles.css"
 
 interface TransformerChartProps {
   transformers: Transformer[]
