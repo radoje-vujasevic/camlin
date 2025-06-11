@@ -30,8 +30,8 @@ export const TransformerChart: React.FC<TransformerChartProps> = ({
   const chartData = useMemo(() => {
     // 1) Collect all timestamps
     const timestampsSet = new Set<string>()
-    transformers.forEach(({ lastTenVoltgageReadings }) =>
-      lastTenVoltgageReadings.forEach(({ timestamp }) =>
+    transformers.forEach(({ lastTenVoltageReadings }) =>
+      lastTenVoltageReadings.forEach(({ timestamp }) =>
         timestampsSet.add(timestamp),
       ),
     )
@@ -41,8 +41,8 @@ export const TransformerChart: React.FC<TransformerChartProps> = ({
     // 2) For each timestamp, build an object: ChartPoint
     return allTimestamps.map(timestamp => {
       const point: ChartPoint = { timestamp }
-      transformers.forEach(({ name, lastTenVoltgageReadings }) => {
-        const match = lastTenVoltgageReadings.find(
+      transformers.forEach(({ name, lastTenVoltageReadings }) => {
+        const match = lastTenVoltageReadings.find(
           r => r.timestamp === timestamp,
         )
         point[name] = match ? match.voltage : null

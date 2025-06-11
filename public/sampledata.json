@@ -4,7 +4,7 @@
     "name": "Transformer Alpha",
     "region": "London",
     "health": "Good",
-    "lastTenVoltgageReadings": [
+    "lastTenVoltageReadings": [
       { "timestamp": "2024-07-21T00:00:00Z", "voltage": "35234" },
       { "timestamp": "2024-07-20T00:00:00Z", "voltage": "29098" },
       { "timestamp": "2024-07-19T00:00:00Z", "voltage": "33456" },
@@ -22,7 +22,7 @@
     "name": "Transformer Bravo",
     "region": "Manchester",
     "health": "Excellent",
-    "lastTenVoltgageReadings": [
+    "lastTenVoltageReadings": [
       { "timestamp": "2024-07-21T00:00:00Z", "voltage": "40234" },
       { "timestamp": "2024-07-20T00:00:00Z", "voltage": "39098" },
       { "timestamp": "2024-07-19T00:00:00Z", "voltage": "39456" },
@@ -40,7 +40,7 @@
     "name": "Transformer Charlie",
     "region": "Glasgow",
     "health": "Fair",
-    "lastTenVoltgageReadings": [
+    "lastTenVoltageReadings": [
       { "timestamp": "2024-07-21T00:00:00Z", "voltage": "32010" },
       { "timestamp": "2024-07-20T00:00:00Z", "voltage": "31500" },
       { "timestamp": "2024-07-19T00:00:00Z", "voltage": "26002" },
@@ -58,7 +58,7 @@
     "name": "Transformer Delta",
     "region": "London",
     "health": "Poor",
-    "lastTenVoltgageReadings": [
+    "lastTenVoltageReadings": [
       { "timestamp": "2024-07-21T00:00:00Z", "voltage": "22110" },
       { "timestamp": "2024-07-20T00:00:00Z", "voltage": "31020" },
       { "timestamp": "2024-07-19T00:00:00Z", "voltage": "26021" },
@@ -76,7 +76,7 @@
     "name": "Transformer Echo",
     "region": "Manchester",
     "health": "Critical",
-    "lastTenVoltgageReadings": [
+    "lastTenVoltageReadings": [
       { "timestamp": "2024-07-21T00:00:00Z", "voltage": "18031" },
       { "timestamp": "2024-07-20T00:00:00Z", "voltage": "21052" },
       { "timestamp": "2024-07-19T00:00:00Z", "voltage": "20285" },

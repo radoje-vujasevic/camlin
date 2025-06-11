@@ -10,9 +10,9 @@ export const transformersApiSlice = createApi({
       query: () => "sampledata.json",
       providesTags: () => [{ type: "Transformers" }],
       transformResponse: (tr: TransformerRaw[]) =>
-        tr.map(({ lastTenVoltgageReadings, ...rest }, i) => ({
+        tr.map(({ lastTenVoltageReadings, ...rest }, i) => ({
           ...rest,
-          lastTenVoltgageReadings: lastTenVoltgageReadings.map(
+          lastTenVoltageReadings: lastTenVoltageReadings.map(
             ({ timestamp, voltage }) => ({
               timestamp,
               voltage: Number(voltage),

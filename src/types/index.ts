@@ -16,10 +16,10 @@ interface VoltageReading {
 }
 
 export interface TransformerRaw extends TransformerBase {
-  lastTenVoltgageReadings: VoltageReadingRaw[]
+  lastTenVoltageReadings: VoltageReadingRaw[]
 }
 
 export interface Transformer extends TransformerBase {
-  lastTenVoltgageReadings: VoltageReading[]
+  lastTenVoltageReadings: VoltageReading[]
   color: string
 }
